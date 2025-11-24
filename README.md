@@ -1,159 +1,137 @@
-Enterprise AIOps Dashboard — Interactive Incident Prediction & Operations Analytics
+Enterprise AIOps Dashboard: Interactive Incident Prediction & Operations Analytics Platform
+Overview
 
-A production-grade analytics and prediction dashboard built for IT operations teams. The platform provides incident forecasting, anomaly detection, workload analysis, and interactive visual insights using enterprise engineering standards.
+A professional-grade dashboard designed for IT operations teams to predict incidents, detect anomalies, and analyze real-time telemetry data. Built with advanced machine learning, interactive visualizations, and enterprise UI patterns.
 
-📌 Overview
+Key Features
+Data Management
 
-The Enterprise AIOps Dashboard enables operations teams to upload telemetry data, generate engineered features, train machine learning models, analyze incidents, and export insights. It is designed for high-volume datasets and structured for real-world enterprise workflows.
+CSV upload (up to 200 MB)
 
-🚀 Key Features
-1. Data Management
+Automated cleaning and type conversion
 
-CSV upload with drag-and-drop (up to 200 MB)
+Real-time validation & schema checks
 
-Automated data cleaning and type conversion
+Advanced Feature Engineering
 
-Real-time validation and quality checks
+Time features (hour, day, month, weekend, business hours)
 
-2. Feature Engineering
-
-Time-based features (hour, day, week, weekend, business hours)
-
-Rolling window statistics
+Rolling stats (mean, std, max, min)
 
 Lag features (1-step, 6-step)
 
-System-level aggregated metrics
+System-level aggregates
 
-3. Machine Learning Models
+Machine Learning Models
 
-XGBoost classifier for incident prediction
+Incident classification (XGBoost)
 
-Random Forest regressor for CPU utilization forecasting
+CPU workload forecasting (RandomForest)
 
-Statistical anomaly detection (Z-score based)
+Anomaly detection (Z-score)
 
-SHAP feature importance for explainability
+SHAP explainability
 
-4. Interactive Visualizations
+Interactive Visualizations
 
-KPI dashboards: MTTR, incident count, priority levels
+KPI dashboard
 
-Time-series telemetry plots
+Time-series charts
 
-System-by-hour incident heatmaps
+Incident heatmaps
 
 Confusion matrix
 
 Anomaly timeline
 
-Feature importance charts
+Feature importance
 
-5. Export Functions
+Export Capabilities
 
-Cleaned dataset (CSV)
+Cleaned CSV
 
-Feature-engineered dataset (CSV)
+Feature-engineered CSV
 
-Prediction outputs (CSV)
+Predictions CSV
 
-Model performance report (TXT)
+Model evaluation reports
 
-🏗️ Architecture
-┌─────────────────────────────────────────────────────────┐
-│                    Data Upload Layer                     │
-│  CSV Ingestion → Validation → Session State Storage      │
-└────────────────────┬────────────────────────────────────┘
-                     │
-┌────────────────────▼────────────────────────────────────┐
-│                 Data Processing Layer                    │
-│  Cleaning → Feature Engineering → Train/Test Split       │
-└────────────────────┬────────────────────────────────────┘
-                     │
-┌────────────────────▼────────────────────────────────────┐
-│                Machine Learning Layer                    │
-│  XGBoost Classifier │ Random Forest Regressor            │
-│  Anomaly Detector   │ SHAP Explainability                │
-└────────────────────┬────────────────────────────────────┘
-                     │
-┌────────────────────▼────────────────────────────────────┐
-│                 Visualization Layer                      │
-│   Plotly Charts → KPI Dashboard → Exports               │
-└─────────────────────────────────────────────────────────┘
+Architecture
+Data Upload → Cleaning → Feature Engineering → ML Models → Dashboard Visualizations → Export Layer
 
-🧰 Technology Stack
-Category	Tools
-Framework	Streamlit
-ML	XGBoost, Scikit-Learn, SHAP
-Visualization	Plotly, Matplotlib, Seaborn
-Data Processing	Pandas, NumPy
-Time Series	Prophet
-Export	pypandoc, reportlab
-📥 Installation & Setup
-Prerequisites
+Technology Stack
 
-Python 3.10+
+Streamlit 1.28+
 
-pip package manager
+XGBoost 2.0+
 
-4GB+ RAM recommended
+Scikit-learn 1.3+
 
-Step 1 — Install
+SHAP 0.43+
+
+Plotly 5.17+
+
+Pandas 2.1+
+
+NumPy 1.24+
+
+Prophet 1.1.5
+
+Installation & Setup
+1. Clone the repository
+git clone <your_repo_url>
+cd enterprise-aiops-dashboard
+
+2. Install dependencies
 pip install -r requirements.txt
 
-Step 2 — Optional: Generate synthetic dataset
-python aiops_data_generator.py
-
-
-Creates:
-aiops_telemetry_data.csv (100,000 rows)
-
-Step 3 — Run the Dashboard
+3. Run the dashboard
 streamlit run aiops_dashboard.py
 
+Usage Guide
+1. Upload Data
 
-Open browser at: http://localhost:8501
+Drag & drop CSV
 
-📘 Usage Guide
-1. Data Upload
+Validate columns
 
-Upload CSV
+Preview rows
 
-Preview dataset
+2. Clean Data
 
-Validate required columns
+Fix missing values
 
-2. Data Cleaning
+Standardize types
 
-Automated missing value handling
+Review cleaning summary
 
-Type corrections
+3. Generate Features
 
-Cleaned dataset preview
+Time-based
 
-3. Feature Engineering
+Rolling windows
 
-Generate time-based, lag-based, rolling, and aggregated features
+Lag features
 
-Organized feature categories
+System aggregates
 
-4. Visualizations
+4. Visualize Insights
 
-KPI dashboard
+KPIs
 
-Interactive time-series
+Time series
 
-Incident heatmaps
+Heatmaps
 
-Anomaly detection timeline
+Anomaly markers
 
-5. Machine Learning
+5. Train ML Models
 
-Train XGBoost classifier & Random Forest regressor
+Classification (incidents)
 
-View metrics: Accuracy, Precision, Recall, ROC-AUC, RMSE, MAE
+Regression (CPU workload)
 
-Generate predictions with probability scores
+Review accuracy, precision, recall, ROC-AUC
 
 6. Export
 
@@ -163,49 +141,41 @@ Engineered data
 
 Predictions
 
-Performance reports
+Performance report
 
-📊 Data Requirements
+Data Requirements
 Required Columns
 Column	Type	Description
-timestamp	datetime	Observation time
-system_id	string	System identifier
-incident_type	string	Incident category
-priority	string	Priority level
-cpu_usage	numeric	CPU utilization
-memory_usage	numeric	Memory usage
-disk_io	numeric	Disk I/O load
-network_traffic	numeric	Network traffic volume
+timestamp	datetime	Data timestamp
+system_id	string	Unique system identifier
+incident_type	string	Category of issue
+priority	string	high/medium/low
+cpu_usage	numeric	CPU load %
+memory_usage	numeric	Memory consumption %
+disk_io	numeric	Disk throughput
+network_traffic	numeric	Network load
 change_count	numeric	Config changes
-tickets_opened	numeric	Helpdesk tickets
-resolution_time	numeric	Resolution time (min)
-Valid Formats
+tickets_opened	numeric	Support tickets
+resolution_time	numeric	Fix duration
+Advanced Features
 
-CSV / UTF-8
+Dynamic filtering (system, incident type, date)
 
-Datetime in ISO format preferred
+Adjustable prediction window
 
-Missing values allowed
+Custom anomaly thresholds
 
-💡 Advanced Features
+Caching for performance
 
-Dynamic sidebar filtering (system, incident type, date range)
+Automatic sampling for large datasets
 
-Customizable ML parameters
-
-Adjustable anomaly detection threshold
-
-Auto-sampling for large datasets
-
-Session caching for faster performance
-
-📦 Deployment Options
+Deployment
 Local
 streamlit run aiops_dashboard.py
 
 Streamlit Cloud
 
-Push repository
+Push to GitHub
 
 Deploy with one click
 
@@ -218,42 +188,37 @@ COPY . .
 EXPOSE 8501
 CMD ["streamlit", "run", "aiops_dashboard.py"]
 
-📉 Model Performance Benchmarks
+Troubleshooting
+Common Issues
+Issue	Fix
+Module not found	reinstall dependencies
+Missing columns	verify CSV schema
+Slow training	reduce feature count
+Memory errors	lower dataset size
+Performance Benchmarks
 
-Incident Classification
+Based on a 100k-row dataset:
+
+Classification
 
 Accuracy: 0.94–0.97
 
-Precision: 0.88–0.92
-
-Recall: 0.85–0.90
-
 ROC-AUC: 0.96–0.98
 
-Workload Prediction
+Forecasting
 
 RMSE: 8–12%
 
 MAE: 5–8%
 
-🛠️ Troubleshooting
-Issue	Solution
-Missing modules	Reinstall dependencies
-Memory error	Reduce dataset size or upgrade RAM
-Slow model training	Reduce feature count
-Missing required columns	Verify dataset headers
-  🛠️ Future Enhancements
+Future Enhancements
 
-Real-time streaming ingestion
+Real-time ingestion
 
-Hyperparameter tuning
+AutoML tuning
 
-LSTM and Autoencoder anomaly models
+LSTM anomaly detection
 
-Prophet forecasting dashboards
+ITSM integration
 
-Enterprise authentication
-
-ITSM integration (ServiceNow, Jira)
-
-
+Multi-tenancy
