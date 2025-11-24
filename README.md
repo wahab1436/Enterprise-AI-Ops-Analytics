@@ -242,7 +242,7 @@ Missing modules	Reinstall dependencies
 Memory error	Reduce dataset size or upgrade RAM
 Slow model training	Reduce feature count
 Missing required columns	Verify dataset headers
-🛠️ Future Enhancements
+  🛠️ Future Enhancements
 
 Real-time streaming ingestion
 
@@ -256,17 +256,4 @@ Enterprise authentication
 
 ITSM integration (ServiceNow, Jira)
 
-📄 License
 
-Enterprise internal use. Contact your organization for licensing details.
-
-📬 Support
-
-Open an issue in the repository
-
-Internal support team: aiops-support@enterprise.com
-
-📌 Version
-
-v1.0.0 — Initial release
-Includes dashboard, ML models, anomaly detection, and exports.
