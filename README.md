@@ -23,31 +23,20 @@ The **Enterprise AIOps Analytics Platform** is an AI-powered solution designed t
 
 ---
 
-## 📊 Visuals
-**Dashboard Example:**
+##Data Requirements
 
-![Dashboard Screenshot](images/dashboard.png)
+Format: CSV
 
-**Incident Distribution Example:**
+Columns: timestamp, system_id, metrics, incident_type, priority
 
-![Incident Distribution](images/incident_distribution.png)
+Encoding: UTF-8
 
----
+Size: ≤ 200 MB
 
-## ⚡ Installation
+##Machine Learning
 
-```bash
-# Clone repository
-git clone https://github.com/yourusername/enterprise-aiops.git
-cd enterprise-aiops
+Classification Model: Predict system incidents (Incident / No Incident)
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate     # Windows
+Regression Model: Predict workload metrics (CPU, Memory, Disk I/O, Network Traffic)
 
-# Install dependencies
-pip install -r requirements.txt
-
-# Run Streamlit app
-streamlit run enterprise_AIOPS.py
+Anomaly Detection: Identify outliers in real-time telemetry
