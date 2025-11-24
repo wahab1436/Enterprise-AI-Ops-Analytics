@@ -1,0 +1,27 @@
+
+# Enterprise AIOps Dashboard - Python Dependencies
+# Python 3.10+
+
+# Core Data Science
+pandas==2.1.0
+numpy==1.24.3
+
+# Machine Learning
+scikit-learn==1.3.0
+xgboost==2.0.0
+
+# Visualization
+streamlit==1.28.0
+plotly==5.17.0
+matplotlib==3.7.2
+seaborn==0.12.2
+
+# Time Series
+prophet==1.1.5
+
+# Model Explainability
+shap==0.43.0
+
+# Utilities
+joblib==1.3.2
+python-dateutil==2.8.2
