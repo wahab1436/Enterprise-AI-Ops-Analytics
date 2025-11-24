@@ -1,224 +1,72 @@
-Enterprise AIOps Dashboard: Interactive Incident Prediction & Operations Analytics Platform
-Overview
+# Enterprise AIOps Dashboard
 
-A professional-grade dashboard designed for IT operations teams to predict incidents, detect anomalies, and analyze real-time telemetry data. Built with advanced machine learning, interactive visualizations, and enterprise UI patterns.
+A production-ready AIOps dashboard for analyzing incidents, forecasting system load, and detecting anomalies using machine learning and operational telemetry data.
 
-Key Features
-Data Management
+## Features
+- Upload and validate operational datasets  
+- Automated data cleaning and preprocessing  
+- Feature engineering for time, system, and workload metrics  
+- Incident classification with XGBoost  
+- CPU load forecasting using ML models  
+- Anomaly detection with statistical thresholds  
+- KPI panels, trends, heatmaps, and system-level insights  
+- Exportable reports and processed datasets  
 
-CSV upload (up to 200 MB)
+## Data Requirements
 
-Automated cleaning and type conversion
+The dataset should include the following columns:
 
-Real-time validation & schema checks
+| Column | Description |
+|--------|-------------|
+| timestamp | Datetime of record |
+| system_id | Unique system identifier |
+| incident_type | Type/category of incident |
+| priority | Severity level |
+| cpu_usage | CPU load percentage |
+| memory_usage | Memory consumption |
+| disk_io | Disk throughput |
+| network_traffic | Network usage |
+| change_count | Configuration changes count |
+| tickets_opened | Number of opened tickets |
+| resolution_time | Time taken to resolve the incident |
 
-Advanced Feature Engineering
+Recommended minimum size: **10,000+ rows**.
 
-Time features (hour, day, month, weekend, business hours)
+## Architecture
+Upload → Clean → Feature Engineering → ML Models → Visualizations → Export
 
-Rolling stats (mean, std, max, min)
+perl
+Copy code
 
-Lag features (1-step, 6-step)
-
-System-level aggregates
-
-Machine Learning Models
-
-Incident classification (XGBoost)
-
-CPU workload forecasting (RandomForest)
-
-Anomaly detection (Z-score)
-
-SHAP explainability
-
-Interactive Visualizations
-
-KPI dashboard
-
-Time-series charts
-
-Incident heatmaps
-
-Confusion matrix
-
-Anomaly timeline
-
-Feature importance
-
-Export Capabilities
-
-Cleaned CSV
-
-Feature-engineered CSV
-
-Predictions CSV
-
-Model evaluation reports
-
-Architecture
-Data Upload → Cleaning → Feature Engineering → ML Models → Dashboard Visualizations → Export Layer
-
-Technology Stack
-
-Streamlit 1.28+
-
-XGBoost 2.0+
-
-Scikit-learn 1.3+
-
-SHAP 0.43+
-
-Plotly 5.17+
-
-Pandas 2.1+
-
-NumPy 1.24+
-
-Prophet 1.1.5
-
-Installation & Setup
-1. Clone the repository
-git clone <your_repo_url>
-cd enterprise-aiops-dashboard
-
-2. Install dependencies
+## Installation
+```bash
 pip install -r requirements.txt
-
-3. Run the dashboard
+Run
+bash
+Copy code
 streamlit run aiops_dashboard.py
+Tech Stack
+Python
 
-Usage Guide
-1. Upload Data
+Streamlit
 
-Drag & drop CSV
+Pandas, NumPy
 
-Validate columns
+Scikit-learn
 
-Preview rows
+XGBoost
 
-2. Clean Data
+SHAP
 
-Fix missing values
+Plotly
 
-Standardize types
+Outputs
+Cleaned dataset
 
-Review cleaning summary
+Feature-engineered dataset
 
-3. Generate Features
+Incident classification predictions
 
-Time-based
+CPU forecasts and anomaly flags
 
-Rolling windows
-
-Lag features
-
-System aggregates
-
-4. Visualize Insights
-
-KPIs
-
-Time series
-
-Heatmaps
-
-Anomaly markers
-
-5. Train ML Models
-
-Classification (incidents)
-
-Regression (CPU workload)
-
-Review accuracy, precision, recall, ROC-AUC
-
-6. Export
-
-Cleaned data
-
-Engineered data
-
-Predictions
-
-Performance report
-
-Data Requirements
-Required Columns
-Column	Type	Description
-timestamp	datetime	Data timestamp
-system_id	string	Unique system identifier
-incident_type	string	Category of issue
-priority	string	high/medium/low
-cpu_usage	numeric	CPU load %
-memory_usage	numeric	Memory consumption %
-disk_io	numeric	Disk throughput
-network_traffic	numeric	Network load
-change_count	numeric	Config changes
-tickets_opened	numeric	Support tickets
-resolution_time	numeric	Fix duration
-Advanced Features
-
-Dynamic filtering (system, incident type, date)
-
-Adjustable prediction window
-
-Custom anomaly thresholds
-
-Caching for performance
-
-Automatic sampling for large datasets
-
-Deployment
-Local
-streamlit run aiops_dashboard.py
-
-Streamlit Cloud
-
-Push to GitHub
-
-Deploy with one click
-
-Docker
-FROM python:3.10-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-COPY . .
-EXPOSE 8501
-CMD ["streamlit", "run", "aiops_dashboard.py"]
-
-Troubleshooting
-Common Issues
-Issue	Fix
-Module not found	reinstall dependencies
-Missing columns	verify CSV schema
-Slow training	reduce feature count
-Memory errors	lower dataset size
-Performance Benchmarks
-
-Based on a 100k-row dataset:
-
-Classification
-
-Accuracy: 0.94–0.97
-
-ROC-AUC: 0.96–0.98
-
-Forecasting
-
-RMSE: 8–12%
-
-MAE: 5–8%
-
-Future Enhancements
-
-Real-time ingestion
-
-AutoML tuning
-
-LSTM anomaly detection
-
-ITSM integration
-
-Multi-tenancy
+Evaluation metrics and reports
